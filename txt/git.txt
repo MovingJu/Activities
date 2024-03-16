@@ -1,7 +1,0 @@
-[initial settings]
-
-git init
-git config --global user.email "baramishe@gmail.com"
-git config --global user.name "MovingJu"
-git branch -M main
-
