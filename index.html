@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>운영체제 확인 페이지</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        #osMessage {
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 0.5s;
+        }
+
+        #hintMessage {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 1s;
+        }
+
+        #hintMessage a {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var osMessageElement = document.getElementById("osMessage");
+        var hintMessageElement = document.getElementById("hintMessage");
+
+        // 유저 에이전트에서 운영체제 정보 확인
+        var userAgent = navigator.userAgent.toLowerCase();
+
+        if (userAgent.includes("linux")) {
+            osMessageElement.innerHTML = "일상 속 요소에 궁금증을 갖고 탐구하는 당신! <br><br> 당신을 파스칼 동아리에서 필요로 합니다! <br><br> 해당 링크를 통해 가입신청 할 수 있습니다: ";
+            var link = document.createElement("a");
+            link.href = "https://forms.gle/6RPtr43avHmLN3Y47";
+            link.innerText = "구글 설문";
+            link.target = "_blank";
+            hintMessageElement.appendChild(link);
+        } 
+        
+        else if (userAgent.includes("windows")) {
+            osMessageElement.innerText = "Windows를 사용 중이군요.";
+            hintMessageElement.innerHTML = "Ubuntu OS를 사용해 접속해주세요. 자세한 설명은 여기를 참고하세요: ";
+            var link = document.createElement("a");
+            link.href = "https://www.youtube.com/watch?v=S_J5yi-JVpY&t=221s";
+            link.innerText = "Ubuntu 설치 가이드";
+            link.target = "_blank";
+            hintMessageElement.appendChild(link);
+        } 
+        
+        else {
+            osMessageElement.innerHTML = "운영체제를 확인할 수 없습니다. <br> ubuntu OS를 이용해 접속해주세요.";
+        }
+    });
+</script>
+
+<h1>환영합니다!</h1>
+
+<p id="osMessage"></p>
+<p id="hintMessage"></p>
+
+</body>
+</html>
